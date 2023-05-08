@@ -1,0 +1,25 @@
+1. Describe any design decisions you made, including your choice of page eviction policy. If you used something other than a nested-loops join, describe the tradeoffs of the algorithm you chose.
+
+Just use the nested loop for join.
+
+Use LinkedHashMap RemoveEldestEntry as the eviction policy, this should act as a FIFO.
+
+Create read and write locks for every page in BufferPool.
+
+2. Discuss and justify any changes you made to the API.
+
+Add an Aggregation class for IntegerAggregator and StringAggregator as shared data storage and operation class.
+
+3. Describe any missing or incomplete elements of your code.
+
+Still need to deal with the locks, to ensure the proper removal consistent with flushpage and flushpages.
+
+Cannot properly mark all the dirty transactions to false, need more time to see why insertTest failed after undirty.
+
+Miss some of the exception handle.
+
+Join does not pass all the test, need time to see why.
+
+4. Describe how long you spent on the lab, and whether there was anything you found particularly difficult or confusing.
+
+I think the total time cost for lab 2 is about 16 hours coding work.

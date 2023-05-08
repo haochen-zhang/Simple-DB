@@ -1,0 +1,23 @@
+1. Describe any design decisions you made, including anything that was difficult or unexpected.
+
+findLeafPage() will return page directly if pid refers to leaf page, or recursively search for the leaf page if pid refers to internal page. When searching among internal pages, it uses READ_ONLY as permission.
+
+splitLeafPage() transfers half of the tuples from input page to new page, by extracting the end tuple and inserting to new page. Similar logic applies to splitInternalPage().
+
+stealFromLeafPage() and stealFromInternalPage() are just functions to transfer the tuples or entries, nothing special. 
+
+Fix some bug from Lab 4. Including flashpages() which resets the page rather than removing from cache, and evictPage() will find the page with lock on it and release lock properly then flush the page to make way for new pages.
+
+2. Discuss and justify any changes you made outside of BTreeFile.java.
+
+All the changes are under the structure of Lab 5 distributed code.
+
+3. How long did this lab take you? Do you have any suggestions for ways to improve it?
+
+I think the total time cost for lab 5 is about 20 hours coding work. This includes some debugging for Lab 4.
+
+Not quite sure why some of the implementation, I always need to delete from one page first then insert to another page to pass the tests. 
+
+4. Optional: If you did the extra credit exercise, explain your implementation and show us that you thoroughly tested it.
+
+No.

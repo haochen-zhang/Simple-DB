@@ -1,0 +1,12 @@
+1. Describe any design decisions you made, including anything that was difficult or unexpected.
+
+add a override rollback() so it could take tid number and file offset so it could be used in recover().
+
+recover() implements analysis, then redo and undo process.
+
+just found wired situation that during test of TestAbortCommitInterleaved, one of the update tid is -1 from the log, cannot figure out what happened and it failed the tests.
+
+
+2. Discuss and justify any changes you made outside of LogFile.java
+
+All the changes are under the structure of Lab 6 distributed code.

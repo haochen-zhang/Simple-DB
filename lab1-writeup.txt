@@ -1,0 +1,21 @@
+1. Describe any design decisions you made. These may be minimal for Lab 1.
+
+The following topics should cover the main decisions being made for Lab 1.
+
+2. Discuss and justify any changes you made to the API.
+
+Add a HeapFileIterator as the implementation of interface DbFileIterator. This is a straightforward design for HeapFile.iterator need a DbFileIterator as return type. In HeapFileIterator, besides overriding the DbFileIterator, it provides a private method for getting the page from BufferPool according to the page number. 
+
+Add getter of types and fields arrays in TupleDesc to make adding alias when SeqScan much easier.
+
+3. Describe any missing or incomplete elements of your code.
+
+There's definately a lot of future work for BufferPool locking design. Currently I just use a simple ReetrantLock to fulfill the simple lock and wait. 
+
+Also there's a need for mechanism to ensure the integrety of page reading while BufferPool pagesize change for future work.
+
+4. Describe how long you spent on the lab, and whether there was anything you found particularly difficult or confusing.
+
+I think the total time cost for lab 1 is about 20 hours coding work. 
+
+Among all the topics for the project, the HeapFile-HeapPage is hardest one to have a quick understand, especially about implementing Heapfile.readPage() and its iterator. It is confusing to have a TupleIterator class and I haven't figure out how can I be benifit from this special purpose iterator. Also it took me sometime to figure out the page structure and how to decide whether the tuple slot is used by interpreting the header. What make me confusing is that the size of header could be not aligned with tuple size, and how to add proper alignment since its digit structure which could be confusing. 

@@ -1,0 +1,23 @@
+1. Describe any design decisions you made, including methods for selectivity estimation, join ordering, as well as any of the bonus exercises you chose to implement and how you implemented them (for each bonus exercise you may submit up to 1 additional page).
+
+LockManager: Implement a lock similar to ReentrantReadWriteLock, which is a lock allowing duplicate read/write lock for a transaction id by tracing transaction in lock queue. The lock will try to use a BFS to detect a circle in dependency graph.
+
+2. Discuss and justify any changes you made to the API.
+
+Add a LockManager.
+
+Add a numPage() method to DbFile interface. Thought it is convenient to get DbFile from catalog and access its number of page estimation without implicitly cast to HeapFile.
+
+3. Describe any missing or incomplete elements of your code.
+
+Not fully fullfill the multi thread deadlock tests.
+
+4. Describe how long you spent on the lab, and whether there was anything you found particularly difficult or confusing.
+
+I think the total time cost for lab 4 is about 26 hours coding work.
+
+Deadlock is extremely hard!
+
+5. Description of any extra credit implementation you have done.
+
+No.

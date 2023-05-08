@@ -1,0 +1,25 @@
+1. Describe any design decisions you made, including methods for selectivity estimation, join ordering, as well as any of the bonus exercises you chose to implement and how you implemented them (for each bonus exercise you may submit up to 1 additional page).
+
+Selectivity estimation: use the bucket-based histogram method described in 2.2.3.
+
+Join ordering: implement the Selinger optimizer pseudocode to optimize nested-loop join.
+
+2. Discuss and justify any changes you made to the API.
+
+Modify the IntHistogram::avgSelectivity() to avgSelectivity(Predicate.Op op), so it could use expectation value to compute selectivity for different operation. Thought it would be helpful to construct method like this and let TableStats::avgSelectivity() to call the IntHistogram::avgSelectivity() directly.
+
+Add a numPage() method to DbFile interface. Thought it is convenient to get DbFile from catalog and access its number of page estimation without implicitly cast to HeapFile.
+
+3. Describe any missing or incomplete elements of your code.
+
+Not so far in terms of passing tests.
+
+4. Describe how long you spent on the lab, and whether there was anything you found particularly difficult or confusing.
+
+I think the total time cost for lab 3 is about 14 hours coding work.
+
+It is confusing in 2.2.4 Join Cardinality which addresses that "It is fine to assume that a fixed fraction of the cross-product is emitted by range scans (say, 30%)". Does it mean "30% as selectivity of each table then do cross product" or "do cross product then apply 30% selectivity"?
+
+5. Description of any extra credit implementation you have done.
+
+No.
